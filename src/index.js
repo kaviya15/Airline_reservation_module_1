@@ -1,5 +1,5 @@
 const express = require("express");
-
+const {PORT} = require("./config/setupFile")
 // CREATE THE INSTANCE OF EXPRESS APP
 
 const createServer = async()=>{
