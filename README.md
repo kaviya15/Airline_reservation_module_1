@@ -1,5 +1,5 @@
 ```
-    Create a config.json file 
+- Create a config.json file 
                 {
                   "development": {
                     "username": <YOUR_DB_LOGIN_NAME>,
