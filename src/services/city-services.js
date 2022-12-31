@@ -1,12 +1,12 @@
 const { CityRepository } = require("../repository/index");
 
-class cityService {
+class CityService {
   constructor() {
     this.cityRepository = new CityRepository();
   }
   async createCity(data) {
     try {
-      return await this.cityRepository.createCity(data);
+      return await this.cityRepository.createCity({name:data.name});
     } catch (err) {
       console.log("Error at creating city service level", err);
       throw { err };
@@ -23,7 +23,7 @@ class cityService {
 
   async updateCity(city_id, data) {
     try {
-      return await this.cityRepository.deleteCity(city_id, data);
+      return await this.cityRepository.updateCity(city_id, { name: data.name });
     } catch (err) {
       console.log("Error at updating city service level", err);
       throw { err };
@@ -40,5 +40,5 @@ class cityService {
 }
 
 module.exports = {
-  cityService,
+  CityService,
 };
