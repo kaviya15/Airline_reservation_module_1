@@ -27,4 +27,6 @@
 - once configuration is completed , execute the command `npx sequelize db:create to create a database`
 
 - npx sequelize model:generate --name City --attributes name:String to create a table named City and columns name, here id is created automatically so was createdAt,updatedAt
+- npx sequelize db:migrate  create the table in the database 
+- npx sequelize db:migrate:undo  removing the table in the database 
 ```
