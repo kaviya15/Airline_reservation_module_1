@@ -1,6 +1,5 @@
 const express = require("express");
 const {PORT} = require("./config/setupFile");
-const CityRepository = require("./repository/city-repository")
 // CREATE THE INSTANCE OF EXPRESS APP
 
 const createServer = async()=>{
