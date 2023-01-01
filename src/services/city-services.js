@@ -31,7 +31,9 @@ class CityService {
   }
   async getCity(city_id) {
     try {
-      return await this.cityRepository.getCity(city_id);
+      let resp = await this.cityRepository.getCity(city_id);
+      console.log("received at the service level", resp);
+      return resp;
     } catch (err) {
       console.log("Error at fetching city service level", err);
       throw { err };
@@ -40,5 +42,5 @@ class CityService {
 }
 
 module.exports = {
-  CityService,
+  CityService
 };

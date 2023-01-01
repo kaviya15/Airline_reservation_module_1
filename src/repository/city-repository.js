@@ -38,6 +38,7 @@ class CityRepository {
   async getCity(city_id) {
     try {
       let get_city = await City.findByPk(city_id);
+      console.log("Fetched data at repo",get_city)
       return get_city;
     } catch (err) {
       console.log("Error in fetching the city at repo", err);

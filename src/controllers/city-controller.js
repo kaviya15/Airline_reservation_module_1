@@ -48,6 +48,7 @@ async function destory(req, res) {
 async function get(req, res) {
   try {
     const response = await cityService.getCity(req.params.id);
+    console.log("response at controller level")
     return res.status(201).json({
       data: response,
       success: true,
@@ -82,3 +83,10 @@ async function update(req, res) {
     });
   }
 }
+
+module.exports = {
+  create,
+  destory,
+  get,
+  update
+};
