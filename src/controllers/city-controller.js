@@ -45,6 +45,26 @@ async function destory(req, res) {
     });
   }
 }
+async function getAll(req, res) {
+  try {
+    console.log(req.query, "req.query.name");
+    const response = await cityService.getAllCities(req.query);
+    console.log("response at controller level");
+    return res.status(201).json({
+      data: response,
+      success: true,
+      message: "successfully fetched the  cities",
+      error: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      data: {},
+      success: true,
+      message: "failed to fetch the cities",
+      error: err,
+    });
+  }
+}
 
 async function get(req, res) {
   try {
@@ -89,5 +109,6 @@ module.exports = {
   create,
   destory,
   get,
-  update
+  update,
+  getAll
 };

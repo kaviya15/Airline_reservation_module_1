@@ -1,7 +1,8 @@
 const { City } = require("../models/index");
-
+const {Op} = require("sequelize")
 class CityRepository {
-  async createCity(data) { // data = {name : "chennai"}
+  async createCity(data) {
+    // data = {name : "chennai"}
     try {
       let new_city = await City.create(data);
       return new_city;
@@ -38,7 +39,27 @@ class CityRepository {
   async getCity(city_id) {
     try {
       let get_city = await City.findByPk(city_id);
-      console.log("Fetched data at repo",get_city)
+      console.log("Fetched data at repo", get_city);
+      return get_city;
+    } catch (err) {
+      console.log("Error in fetching the city at repo", err);
+    }
+  }
+
+  async getAllCities(data) {
+    try {
+      if(data.name){
+        let get_city = await City.findAll({
+          where: {
+            name: {
+              [Op.like]: data.name + "%",
+            },
+          },
+        });
+        return get_city;
+      }
+      let get_city = await City.findAll();
+      console.log("Fetched data at repo", get_city);
       return get_city;
     } catch (err) {
       console.log("Error in fetching the city at repo", err);
