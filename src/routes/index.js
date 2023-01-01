@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ApiRoutes = require("./v1/index")
-router.use("v1", ApiRoutes);
+
+const cityRoute = require("./v1/index")
+router.use("/v1", cityRoute);
 module.exports = router;

@@ -8,6 +8,7 @@ const cityService = new CityService();
 
 async function create(req, res) {
   try {
+    console.log("req body" , req.body)
     const response = await cityService.createCity(req.body);
     return res.status(201).json({
       data: response,
@@ -71,14 +72,14 @@ async function update(req, res) {
     return res.status(201).json({
       data: response,
       success: true,
-      message: "successfully fetched the city ",
+      message: "successfully updated the city ",
       error: {},
     });
   } catch (err) {
     return res.status(500).json({
       data: {},
       success: true,
-      message: "failed to fetch the city",
+      message: "failed to update the city",
       error: err,
     });
   }

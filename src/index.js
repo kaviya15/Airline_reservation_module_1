@@ -7,6 +7,7 @@ const createServer = async () => {
   const app = express();
   app.use(express.json());
   app.use("/api", ApiRoutes);
+  
   app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
   });
