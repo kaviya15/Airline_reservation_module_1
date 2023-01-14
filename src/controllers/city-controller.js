@@ -8,8 +8,28 @@ const cityService = new CityService();
 
 async function create(req, res) {
   try {
-    console.log("req body" , req.body)
+    console.log("req body", req.body);
     const response = await cityService.createCity(req.body);
+    return res.status(201).json({
+      data: response,
+      success: true,
+      message: "successfully created the city ",
+      error: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      data: {},
+      success: true,
+      message: "failed to create the city",
+      error: err,
+    });
+  }
+}
+
+async function createCities(req, res) {
+  try {
+    console.log("req body", req.body);
+    const response = await cityService.createCities(req.body);
     return res.status(201).json({
       data: response,
       success: true,
@@ -69,7 +89,27 @@ async function getAll(req, res) {
 async function get(req, res) {
   try {
     const response = await cityService.getCity(req.params.id);
-    console.log("response at controller level")
+    console.log("response at controller level");
+    return res.status(201).json({
+      data: response,
+      success: true,
+      message: "successfully fetched the city ",
+      error: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      data: {},
+      success: true,
+      message: "failed to fetch the city",
+      error: err,
+    });
+  }
+}
+
+async function getAllAirportsByCityid(req, res) {
+  try {
+    const response = await cityService.getAllAirportsByCityid(req.params.id);
+    console.log("response at controller level");
     return res.status(201).json({
       data: response,
       success: true,
@@ -110,5 +150,7 @@ module.exports = {
   destory,
   get,
   update,
-  getAll
+  createCities,
+  getAllAirportsByCityid,
+  getAll,
 };

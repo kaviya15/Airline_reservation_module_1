@@ -1,10 +1,22 @@
-const { City } = require("../models/index");
-const {Op} = require("sequelize")
+const { City , Airport} = require("../models/index");
+const {Op} = require("sequelize");
+const db = require("../models/index");
+
 class CityRepository {
   async createCity(data) {
     // data = {name : "chennai"}
     try {
       let new_city = await City.create(data);
+      return new_city;
+    } catch (err) {
+      console.log("Error in the creation of city at repo", err);
+      throw { err };
+    }
+  }
+  async createCities(data) {
+    // data = {name : "chennai"}
+    try {
+      let new_city = await City.bulkCreate(data);
       return new_city;
     } catch (err) {
       console.log("Error in the creation of city at repo", err);
@@ -46,9 +58,24 @@ class CityRepository {
     }
   }
 
+  async getAllAirportsByCityid(city_id) {
+    /**get the airport table as well as the data from city table
+     * using the foreign key as primary key
+     */
+    try {
+      const [results, metadata] = await db.sequelize.query(
+        `SELECT cities.name as city_name , airports.name as airport_name ,airports.id as airport_id , cities.id as city_id FROM CITIES INNER JOIN AIRPORTS ON airports.cityId = cities.id where cities.id = ${city_id}`
+      );
+      console.log("Fetched data at repo", results);
+      return results;
+    } catch (err) {
+      console.log("Error in fetching the city and table at repo", err);
+    }
+  }
+
   async getAllCities(data) {
     try {
-      if(data.name){
+      if (data.name) {
         let get_city = await City.findAll({
           where: {
             name: {
