@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,43 +11,46 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
 
     await queryInterface.bulkInsert(
       "Airports",
       [
         {
-          name: "Chennai International Airport",
-          address: "Airport Rd, Meenambakkam, Chennai, Tamil Nadu 600027",
-          cityId: 11,
+          name: "Kempegowda International Airport",
+          cityId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: " Indira Gandhi International Airport",
-          address: "New Delhi, Delhi 110037",
-          cityId: 14,
+          name: "Mysuru Airport",
+          cityId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Safdarjung Airport",
-          address: "New Delhi, Delhi 110037",
-          cityId: 14,
+          name: "Mengaluru International Airport",
+          cityId: 1,
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
+        },
+        {
+          name: "Indira Gandhi International Airport",
+          cityId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
     );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };

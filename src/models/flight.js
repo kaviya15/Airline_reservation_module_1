@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Flights.init(
+  Flight.init(
     {
       flightNumber: {
         type: DataTypes.STRING,
